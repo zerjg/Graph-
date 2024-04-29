@@ -4,10 +4,11 @@ import './App.css';
 import DataComponent from './DataComponent';
  function App() {
   const data = [10, 20, 30, 40, 50]
+  
   return (
     <div className="App">
       <header>
-      <DataComponent data={data}/>
+      <DataComponent data={data}  />
       </header>
     </div>
   );
