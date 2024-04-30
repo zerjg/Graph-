@@ -4,7 +4,7 @@ interface DataProps {
   data: number[]
 }
 const DataComponent: React.FC<DataProps> = ({ data }) => {
-  const specifiData = [10, 20, 10, 30, 50]; 
+  const specifiData = [10, 20,5, 30, 50, 15,197, 44, 77,88,120]; 
 
   return (
     <div style= {{display: 'flex',flexDirection: 'column', alignItems: 'center'}}>

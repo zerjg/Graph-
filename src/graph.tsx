@@ -1,9 +1,6 @@
 import React from 'react'; // Импортируем библиотеку React
 import { useEffect, useState } from 'react';
-type DataItem = {
-  name: string,
-  value: number
-}
+
 
 type Props = { // Определяем тип Props для компонента Graph
   data: number[]; // Массив чисел для отображения на графике
@@ -16,10 +13,10 @@ const Graph: React.FC<Props> = ({ data, width, height, color }) => { // Созд
  
 
   const maxValue = Math.max(...data); // Находим максимальное значение в массиве data
-  const topContainer = 30;
+  const topContainer = 0;
   const contentContainer = 30;
 
-  const bottomAreaContainer = height - topContainer - contentContainer 
+  const bottomAreaContainer = 10
 
   return (
 
@@ -56,11 +53,13 @@ const Graph: React.FC<Props> = ({ data, width, height, color }) => { // Созд
       ))}
       <div className="main-container" style={{
         height: height, display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
       }}>
-        <div className="top-container" style={{ height: `${topContainer}px` }}>График показателей в барах</div>
-        <div className="content-container" style={{ height: `${contentContainer}px` }}>Гадя Петрович </div>
-        <div className="bottom_area-container" style={{ height: `${bottomAreaContainer}px` }}>Рассчет</div>
+        <div className="top-container" style={{ height: `${topContainer}px` }}>График показателей в барах
+        <div className="content-container" style={{ height: `${contentContainer}px`, marginTop: '10px' }}> Компания "Luxor"
+        <div className="bottom_area-container" style={{ height: `${bottomAreaContainer}px`, marginTop: '56px' }}>Рассчет</div>
+        </div>
+        </div>
       </div>
 
     </div>
