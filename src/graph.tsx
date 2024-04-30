@@ -56,8 +56,8 @@ const Graph: React.FC<Props> = ({ data, width, height, color }) => { // Созд
         flexDirection: 'column',
       }}>
         <div className="top-container" style={{ height: `${topContainer}px` }}>График показателей в барах
-        <div className="content-container" style={{ height: `${contentContainer}px`, marginTop: '10px' }}> Компания "Luxor"
-        <div className="bottom_area-container" style={{ height: `${bottomAreaContainer}px`, marginTop: '56px' }}>Рассчет</div>
+        <div className="content-container" style={{ height: `${contentContainer}px`,  }}> Компания "Luxor"
+        <div className="bottom_area-container" style={{ height: `${bottomAreaContainer}px` }}>Рассчет</div>
         </div>
         </div>
       </div>
