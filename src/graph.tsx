@@ -21,7 +21,7 @@ const Graph: React.FC<Props> = ({ data, width, height, color }) => { // Созд
   return (
 
     // 1-div контейнер отвечает за общую область отображения графика
-    <div style={{
+    <div className='main_graph' style={{
       position: 'relative', // Устанавливаем позицию элемента
       top: 10, // Отступ сверху
       width: width, // Устанавливаем ширину
@@ -35,15 +35,15 @@ const Graph: React.FC<Props> = ({ data, width, height, color }) => { // Созд
     }}>
       {data.map((value, index) => (
         // 2-div контейнер отвечает за вертикальное выравнивание столбцов графика
-        <div key={index} style={{ marginBottom: 2, marginRight: 30 }}>
+        <div className="graph_column-container"  key={index} style={{ marginBottom: 2, marginRight: 30 }}>
 
           {/* 3-div представляет сам столбец графика */}
-          <div style={{
+          <div className="graph-column"  style={{
             backgroundColor: color ,
           
             width: width / data.length, // Рассчитываем ширину столбца
             height: `${(value / maxValue) * height}px`, // Рассчитываем высоту столбца относительно максимального значения
-          }}>
+          }}> 
             {/* span отображает текстовое значение столбца */}
           </div>
           {/*Отображаем текстовое значение столбца*/}
