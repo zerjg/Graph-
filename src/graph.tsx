@@ -14,12 +14,11 @@ const Graph: React.FC<Props> = ({ data, width, height, color }) => { // Созд
   const topContainer = 30;
   const contentContainer = 30;
 
-  const bottomAreaContainer = height -  topContainer - contentContainer 
+
+  const bottomAreaContainer = height - topContainer - contentContainer;
 
   return (
-    <div className="mainContainer" style={{
-      height: height, display: 'flex',
-      flexDirection: 'column'}}>
+   
       
         <div className='graphContainer' style={{
           position: 'relative', // Устанавливаем позицию элемента
@@ -43,7 +42,7 @@ const Graph: React.FC<Props> = ({ data, width, height, color }) => { // Созд
                 backgroundColor: color,
 
                 width: width / data.length, // Рассчитываем ширину столбца
-                height: `${(value / maxValue) * height}px`, // Рассчитываем высоту столбца относительно максимального значения
+                height: `${(value / maxValue) * contentContainer}px`, // Рассчитываем высоту столбца относительно среднего контейнера
               }}>
                 {/* span отображает текстовое значение столбца */}
               </div> {/* закрывание контейнера graphColumn */}
@@ -54,18 +53,27 @@ const Graph: React.FC<Props> = ({ data, width, height, color }) => { // Созд
             </div> /* Закрывается контейнер graphColumnContainer */ 
 
           ))}
-
-        </div> {/* Закрывается контейнер graphContainer */ }
-
-        <div className="top-container" style={{ height: `${topContainer}px` }}>График показателей в барах</div>
+           <div className="mainContainer" style={{
+      height: height, display: 'flex',
+      flexDirection: 'column'}}>
+          <div className="top-container" style={{ height: `${topContainer}px` }}>График показателей в барах
+<div className="content-container" style={{ height: `${contentContainer}px`, }}> Компания "Luxor" 
+<div className="bottom_area-container" style={{ height: `${bottomAreaContainer}px`, flexGrow: 1  }}>Рассчет</div> 
+</div> {/* Закрывается контейнер content-container */}
+</div> {/* Закрывается контейнер top-container */}
+</div> {/* Закрывается контейнер mainContainer */ }
        
-      
-        <div className="content-container" style={{ height: `${contentContainer}px`, }}> Компания "Luxor" </div> 
-          <div className="bottom_area-container" style={{ height: `${bottomAreaContainer}px` }}>Рассчет</div> 
+        </div> /* Закрывается контейнер graphContainer */
+
         
        
-
-    </div> /* Закрывается контейнер mainContainer */ 
+      
+         
+          
+        
+       
+          
+    
 
   );
 };
