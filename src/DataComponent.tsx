@@ -12,7 +12,7 @@ const DataComponent: React.FC<DataProps> = ({ data }) => {
         <Graph data={specifiData}  width={400} height={200} color='blue'  />
     
       
-    </div>
+    </div> 
   )
 }
 export default DataComponent
