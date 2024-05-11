@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 type Props = {
@@ -9,17 +8,12 @@ type Props = {
 };
 
 const Graph: React.FC<Props> = ({ data, width, height, color }) => {
-
   const maxValue = Math.max(...data);
   const topContainer = 30;
   const contentContainer = 30;
-
-
   const bottomAreaContainer = height - topContainer - contentContainer;
 
   return (
-
-
     <div className='graphContainer' style={{
       position: 'absolute',
       top: 10,
@@ -32,26 +26,16 @@ const Graph: React.FC<Props> = ({ data, width, height, color }) => {
       alignItems: 'flex-end',
       justifyContent: 'center',
     }}>
-
       {data.map((value, index) => (
-
         <div className='graphColumnContainer' key={index} style={{ marginBottom: 2, marginRight: 30 }}>
-
-
           <div className='graphColumn' style={{
             backgroundColor: color,
-
             width: width / data.length,
             height: `${(value / maxValue) * contentContainer}px`,
           }}>
-
           </div>
-
-
           <span style={{ color, padding: 0 }}>{value} Bar</span>
-
         </div>
-
       ))}
       <div className="mainContainer" style={{
         height: height, display: 'flex',
@@ -65,20 +49,7 @@ const Graph: React.FC<Props> = ({ data, width, height, color }) => {
           </div>
         </div>
       </div>
-
     </div>
-
-
-
-
-
-
-
-
-
-
-
   );
 };
-
 export default Graph; 
