@@ -1,0 +1,21 @@
+.graphContainer {
+        position: 'absolute';
+        top: 10;
+        width: width;
+        height: height;
+        background-color: 'white';
+        padding: 10;
+        display: 'flex';
+        flex-direction: 'row';
+        align-items: 'flex-end';
+        justify-content: 'center';
+}
+.graphColumnContainer {
+        margin-bottom: 2;
+        margin-right: 30;
+}
+.graphColumn {
+        /* background-color: color;
+        width: width / data.length;
+        height: `${(value / maxValue) * contentContainerHeight}px`; */
+}
