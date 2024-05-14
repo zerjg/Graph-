@@ -23,11 +23,12 @@ const Graph: React.FC<Props> = ({
   const bottomAreaContainer = 30;
   const contentContainer = height - topContainer - bottomAreaContainer;
 
-  const { mainContainer, top_Container, content_Container, graph, dataBar } = styles
+  const { mainContainer, top_Container, content_Container, graph, dataBar, graphColumn, spanValue } = styles
   const widthHeight = {
     minHeight: `${height}px`,
     width: `${width}px`,
   }
+
   return (
     <div className={mainContainer} style={widthHeight} >
       <div className={top_Container} style={{ minHeight: topContainer }}>{title}</div>
@@ -39,7 +40,7 @@ const Graph: React.FC<Props> = ({
               width: (width - (data.length - 1) * 45) / data.length,
               height: `${(value / maxValue) * contentContainer}px`,
             }} />
-            <span style={{ color, padding: 0 }}>{value} Bar</span>
+            <span className={spanValue} style={{ color, padding: 0 }}>{value}</span>
           </div>
         ))}
       </div>
