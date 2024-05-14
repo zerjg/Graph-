@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './graph.module.css'
 
 type Props = {
   data: number[];
@@ -6,6 +7,7 @@ type Props = {
   height: number;
   color: string;
   title: string;
+  bottomTitle?: string
 };
 
 const Graph: React.FC<Props> = ({
@@ -14,20 +16,24 @@ const Graph: React.FC<Props> = ({
   height,
   color,
   title,
+  bottomTitle,
 }) => {
   const maxValue = Math.max(...data);
   const topContainer = 30;
   const bottomAreaContainer = 30;
   const contentContainer = height - topContainer - bottomAreaContainer;
 
+  const { mainContainer, top_Container, content_Container, graph, dataBar } = styles
+  const widthHeight = {
+    minHeight: `${height}px`,
+    width: `${width}px`,
+  }
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'gold', minHeight: height, width: width }}>
-
-      <div style={{ width: '100%', textAlign: 'center', backgroundColor: 'Salmon', minHeight: topContainer }}>{title}</div>
-
-      <div style={{ backgroundColor: 'OrangeRed', minHeight: contentContainer, flexDirection: 'row', display: 'flex', alignItems: 'flex-end' }}>
+    <div className={mainContainer} style={widthHeight} >
+      <div className={top_Container} style={{ minHeight: topContainer }}>{title}</div>
+      <div className={graph} style={{ minHeight: contentContainer }}>
         {data.map((value, index) => (
-          <div key={index} style={{ marginBottom: 2, marginRight: 10 }}>
+          <div className={dataBar} key={index} >
             <div style={{
               backgroundColor: color,
               width: (width - (data.length - 1) * 45) / data.length,
@@ -37,7 +43,7 @@ const Graph: React.FC<Props> = ({
           </div>
         ))}
       </div>
-      <div style={{ backgroundColor: '#00ff00', minHeight: bottomAreaContainer }}>Отчет</div>
+      <div style={{ backgroundColor: '#00ff00', minHeight: bottomAreaContainer }}>{bottomTitle}</div>
     </div>
   );
 };
