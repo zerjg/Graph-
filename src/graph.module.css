@@ -17,6 +17,8 @@
         display: flex;
         flex-direction: column;
         background-color: red;
+       width: var(--main-container-width);
+       min-height: var(--main-container-height);
 }
 
 .top_Container {
@@ -44,6 +46,12 @@
         margin-right: 10px;
 }
 
+.graphColumn {
+        height: var(--column-height);
+        width: var(--column-width);
+        background-color: var(--backgr-color-column);
+}
 .spanValue {
-        
+        padding: 0 ;
+        color: var(--spanColor);
 }
