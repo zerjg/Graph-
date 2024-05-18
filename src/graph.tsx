@@ -23,32 +23,30 @@ const Graph: React.FC<Props> = ({
   const bottomAreaContainer = 30;
   const contentContainer = height - topContainer - bottomAreaContainer;
 
-  const { mainContainer, top_Container, content_Container, graph, dataBar, graphColumn, spanValue } = styles
-  
-  const mainContainerStyles = {
+  const { mainContainer, top_Container, content_Container, dataBar, graphColumn, spanValue } = styles
+  const mainContainerStyle = {
     '--main-container-width': `${width}px`,
-    '--main-container-height': `${height}px`,
+    '--main-container-height': `${height}px`
   } as React.CSSProperties;
   const graphColumnStyle = {
     '--column-width': `${(width - (data.length - 1) * 45) / data.length}px`,
-    '--backgr-color-column': `${color}`,
+    '--backgr-color-column': `${color}`
   } as React.CSSProperties;
   const spanValueStyle = {
     '--spanColor': `${color}`
   } as React.CSSProperties;
   return (
-    <div className={mainContainer} style={mainContainerStyles} >
+    <div className={mainContainer} style={mainContainerStyle} >
       <div className={top_Container} style={{ minHeight: topContainer }}>{title}</div>
-      <div className={graph} style={{ minHeight: contentContainer }}>
+      <div className={content_Container} style={{ minHeight: contentContainer }}>
         {data.map((value, index) => (
-
           <div className={dataBar} key={index} >
             <div className={graphColumn} style={{ height: `${(value / maxValue) * contentContainer}px`, ...graphColumnStyle }} />
             <span className={spanValue} style={spanValueStyle}>{value}</span>
           </div>
         ))}
       </div>
-      <div style={{ backgroundColor: '#00ff00', minHeight: bottomAreaContainer }}>{bottomTitle}</div>
+      <div className="bottomArea" style={{ minHeight: bottomAreaContainer }}>{bottomTitle}</div>
     </div>
   );
 };

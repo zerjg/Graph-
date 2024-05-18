@@ -34,7 +34,7 @@
         background-color: OrangeRed;
 }
 
-.graph {
+.content_Container {
         display: flex;
         flex-direction: row;
         align-items: flex-end;
@@ -54,4 +54,7 @@
 .spanValue {
         padding: 0 ;
         color: var(--spanColor);
+}
+.bottomArea {
+        background-color: #00ff00;
 }
