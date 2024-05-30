@@ -1,3 +1,4 @@
+
 import React from 'react';
 import styles from './graph.module.css'
 
@@ -7,7 +8,8 @@ type Props = {
   height: number;
   color: string;
   title: string;
-  bottomTitle?: string
+  bottomTitle?: string;
+  previousData: number[]  
 };
 
 const Graph: React.FC<Props> = ({
@@ -17,13 +19,16 @@ const Graph: React.FC<Props> = ({
   color,
   title,
   bottomTitle,
+  previousData
 }) => {
+  
+ 
   const maxValue = Math.max(...data);
   const topContainer = 30;
   const bottomAreaContainer = 30;
   const contentContainer = height - topContainer - bottomAreaContainer;
 
-  const { mainContainer, top_Container, content_Container, dataBar, graphColumn, spanValue } = styles
+  const { mainContainer, top_Container, content_Container, dataBar, graphColumn, spanValue,graphColumn_previous } = styles
   const mainContainerStyle = {
     '--main-container-width': `${width}px`,
     '--main-container-height': `${height}px`
@@ -35,8 +40,9 @@ const Graph: React.FC<Props> = ({
   const spanValueStyle = {
     '--spanColor': `${color}`
   } as React.CSSProperties;
+
   return (
-    <div className={mainContainer} style={mainContainerStyle} >
+    <div className={mainContainer} style={mainContainerStyle}>
       <div className={top_Container} style={{ minHeight: topContainer }}>{title}</div>
       <div className={content_Container} style={{ minHeight: contentContainer }}>
         {data.map((value, index) => (
@@ -45,9 +51,16 @@ const Graph: React.FC<Props> = ({
             <span className={spanValue} style={spanValueStyle}>{value}</span>
           </div>
         ))}
+  {previousData.map((value, index) => (
+          <div className={dataBar} key={index} >
+            <div className={graphColumn_previous} style={{ height: `${(value / maxValue) * contentContainer}px`, ...graphColumnStyle }} />
+            <span className={spanValue} style={spanValueStyle}>{value}</span>
+          </div>
+        ))}
+
       </div>
       <div className="bottomArea" style={{ minHeight: bottomAreaContainer }}>{bottomTitle}</div>
     </div>
   );
 };
-export default Graph; 
+export default Graph;
