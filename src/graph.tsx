@@ -9,7 +9,7 @@ type Props = {
   color: string;
   title: string;
   bottomTitle?: string;
-  previousData: number[]  
+  previousData: number[]
 };
 
 const Graph: React.FC<Props> = ({
@@ -21,20 +21,23 @@ const Graph: React.FC<Props> = ({
   bottomTitle,
   previousData
 }) => {
-  
- 
+
+
   const maxValue = Math.max(...data);
   const topContainer = 30;
   const bottomAreaContainer = 30;
   const contentContainer = height - topContainer - bottomAreaContainer;
-
-  const { mainContainer, top_Container, content_Container, dataBar, graphColumn, spanValue,graphColumn_previous } = styles
+  const { mainContainer, top_Container, content_Container, dataBar, graphColumn, spanValue, graphColumn_previous, graph_previous } = styles
   const mainContainerStyle = {
     '--main-container-width': `${width}px`,
     '--main-container-height': `${height}px`
   } as React.CSSProperties;
   const graphColumnStyle = {
-    '--column-width': `${(width - (data.length - 1) * 45) / data.length}px`,
+    '--column-width': `${Math.max()}px`,
+    '--backgr-color-column': `${color}`
+  } as React.CSSProperties;
+  const graphColumn_previousStyle = {
+    '--column-width': `${Math.max()}px`,
     '--backgr-color-column': `${color}`
   } as React.CSSProperties;
   const spanValueStyle = {
@@ -51,14 +54,21 @@ const Graph: React.FC<Props> = ({
             <span className={spanValue} style={spanValueStyle}>{value}</span>
           </div>
         ))}
-  {previousData.map((value, index) => (
-          <div className={dataBar} key={index} >
-            <div className={graphColumn_previous} style={{ height: `${(value / maxValue) * contentContainer}px`, ...graphColumnStyle }} />
-            <span className={spanValue} style={spanValueStyle}>{value}</span>
-          </div>
-        ))}
 
+        <div className={graph_previous} style={{ display: 'flex', flexDirection: 'row', }}>
+          {previousData.map((value, index) => (
+            <div className={dataBar} key={index} >
+              <div className={graphColumn_previous} style={{ height: `${(value / maxValue) * contentContainer}px`, ...graphColumn_previousStyle }} />
+              <span className={spanValue} style={spanValueStyle}>{value}</span>
+            </div>
+
+          ))}
+        </div>
       </div>
+
+
+
+
       <div className="bottomArea" style={{ minHeight: bottomAreaContainer }}>{bottomTitle}</div>
     </div>
   );

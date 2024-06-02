@@ -16,9 +16,10 @@ export function getChangedIndices(newData: number[], previousData: number[]): nu
 }
 
 export const DataComponent: React.FC<DataProps> = ({ data }) => {
-  const specificData =  [10, 54, 35, 1, 10, 50, 22, 40, 70, 200, 90, 103];
+  const specificData =  [10,179,110];
   const [previousSpecificData, setPreviousSpecificData] = useState<number[]>(specificData.slice());
   const [previousValues, setPreviousValues] = useState<number[]>([]);
+  const [history, setHistory] = useState<number[]>(specificData);
 
   useEffect(() => {
     const changedIndices = getChangedIndices(specificData, previousSpecificData);
