@@ -19,6 +19,7 @@
         background-color: red;
         width: var(--main-container-width);
         min-height: var(--main-container-height);
+        min-width: var (--min-Width, 400px);
 }
 
 .top_Container {

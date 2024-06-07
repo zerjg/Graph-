@@ -3,7 +3,7 @@ import styles from './graph.module.css'
 
 type Props = {
   data: { current: number; previous: number | null }[];
-  width: number;
+  
   height: number;
   color: string;
   title: string;
@@ -12,7 +12,6 @@ type Props = {
 
 const Graph: React.FC<Props> = ({
   data,
-  width,
   height,
   color,
   title,
@@ -24,14 +23,13 @@ const Graph: React.FC<Props> = ({
   const contentContainer = height - topContainer - bottomAreaContainer;
   const { mainContainer, top_Container, content_Container, dataBar, graphColumn, spanValue, graphColumn_previous, graph_previous } = styles
   const mainContainerStyle = {
-    '--main-container-width': `${width}px`,
+    '--main-container-width':  `var(--min-Width)`,
     '--main-container-height': `${height}px`
   } as React.CSSProperties;
   const graphColumnStyle = {
-    '--column-width': `${width * 0.1}px`,
+    '--column-width': `calc(var(--min-Width) * 0.1)`,
     '--backgr-color-column': `${color}`
   } as React.CSSProperties;
-
   const graphColumn_previousStyle = {
     '--column-width': `${Math.max(...data.map(item => item.previous ?? 0))}px`,
     '--backgr-color-column': `${color}`
@@ -41,13 +39,11 @@ const Graph: React.FC<Props> = ({
   const spanValueStyle = {
     '--spanColor': `${color}`
   } as React.CSSProperties;
- const minWContContainer = {
-  '--min-Width': `${width}`
- } as React.CSSProperties;
+ 
   return (
     <div className={mainContainer} style={mainContainerStyle}>
       <div className={top_Container} style={{ minHeight: topContainer }}>{title}</div>
-      <div className={content_Container} style={{ minHeight: contentContainer, ...minWContContainer }}>
+      <div className={content_Container} style={{ minHeight: contentContainer }}>
         {data.map(({ current, previous }, index) => (
           <>
             <div className={dataBar} key={`current-${index}`}>
