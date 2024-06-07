@@ -18,6 +18,8 @@ const Graph: React.FC<Props> = ({
   title,
   bottomTitle
 }) => {
+  const totalWidth = width -  (width/ data.length)
+  const columnWidth = `${totalWidth * 0.5}px`
   const maxValue = Math.max(...data.map(item => item.current));
   const topContainer = 30;
   const bottomAreaContainer = 30;
@@ -28,15 +30,12 @@ const Graph: React.FC<Props> = ({
     '--main-container-height': `${height}px`
   } as React.CSSProperties;
   const graphColumnStyle = {
-    '--column-width': `${width * 0.1}px`,
     '--backgr-color-column': `${color}`
   } as React.CSSProperties;
 
   const graphColumn_previousStyle = {
-    '--column-width': `${Math.max(...data.map(item => item.previous ?? 0))}px`,
     '--backgr-color-column': `${color}`
-
-  } as React.CSSProperties;
+ } as React.CSSProperties;
 
   const spanValueStyle = {
     '--spanColor': `${color}`
@@ -51,12 +50,12 @@ const Graph: React.FC<Props> = ({
         {data.map(({ current, previous }, index) => (
           <>
             <div className={dataBar} key={`current-${index}`}>
-              <div className={graphColumn} style={{ height: `${(current / maxValue) * contentContainer}px`, ...graphColumnStyle }} />
+              <div className={graphColumn} style={{ height: `${(current / maxValue) * contentContainer}px`, ...graphColumnStyle, width: columnWidth }} />
               <span className={spanValue} style={spanValueStyle}>{current}</span>
             </div>
             {previous !== null && (
               <div className={dataBar} key={`previous-${index}`}>
-                <div className={graphColumn_previous} style={{ height: `${(previous / maxValue) * contentContainer}px`, ...graphColumn_previousStyle }} />
+                <div className={graphColumn_previous} style={{ height: `${(previous / maxValue) * contentContainer}px`, ...graphColumn_previousStyle, width: columnWidth  }} />
                 <span className={spanValue} style={spanValueStyle}>{previous}</span>
               </div>
             )}

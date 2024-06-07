@@ -9,8 +9,6 @@ export const DataComponent: React.FC<DataProps> = ()  => {
   const [specificData, setSpecificData] = useState<{ current: number; previous: number | null }[]>([
     { current: 13, previous: 28 },
     { current: 80, previous: 54 },
-    { current: 40, previous: 100 },
-    { current: 50, previous: 33 },
   ]);
   const [previousData, setPreviousData] = useState<{ current: number; previous: number | null }[]>([]);
 
