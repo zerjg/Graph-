@@ -22,13 +22,13 @@
 }
 
 .top_Container {
-        width: 100%;
+     
         text-align: center;
         background-color: Salmon;
 }
 
 .content_Container {
-        white-space: nowrap;
+        
         flex-direction: row;
         display: flex;
         align-items: flex-end;
@@ -42,12 +42,7 @@
         margin-right: 0px;
 }
 
-.graphColumn {
-       
-        height: var(--column-height);
-        
-        background-color: var(--backgr-color-column);
-}
+
 
 .spanValue {
         padding: 0;
@@ -58,11 +53,29 @@
         background-color: #00ff00;
 }
 
-/* Добавьте эти стили в ваш CSS файл, чтобы управлять отображением предыдущих значений */
+.graphColumn {
+       
+       
+        
+        background-color: var(--backgr-color-column);
+}
 .graphColumn_previous {
         
-        bottom: 0;
+      
+
         background-color: rgb(0, 123, 255);
-        margin-right: 4px;
+        
 }
 
+.blockGroup {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+         align-items: flex-end;       
+        width: 50%;
+        border : 2px solid green;
+        height: var(--height_blockGroup);
+        
+
+        
+}

@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Graph from './graph';
 
-interface DataProps {
-  // Удалите пропс data, так как он больше не нужен
-}
 
-export const DataComponent: React.FC<DataProps> = ()  => {
-  const [specificData, setSpecificData] = useState<{ current: number; previous: number | null }[]>([
+
+const DataComponent: React.FC = ()  => {
+  const specificData = [
     { current: 13, previous: 28 },
     { current: 80, previous: 54 },
-  ]);
-  const [previousData, setPreviousData] = useState<{ current: number; previous: number | null }[]>([]);
-
-  useEffect(() => {
-    setPreviousData(specificData.filter(item => item.previous !== null));
-  }, [specificData]);
-
+    { current: 100, previous: 25 },
+    { current: 34, previous: 121 },
+    
+  ]
+  const previousData = specificData.filter(item => item.previous!==null)
   return (
     <div className="data" style={{ display: 'flex', flexDirection: 'row', maxHeight: '1000px' }}>
         {/* <Graph data={specificData} width={400} height={200} color="blue" title="Текущие данные" bottomTitle="Измерения в Bar" /> */}
