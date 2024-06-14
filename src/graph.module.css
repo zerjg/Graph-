@@ -70,12 +70,11 @@
 .blockGroup {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: flex-end;       
-        width: var(--blockGroup_Width);
-        margin-right: var(--marginRight_BlockGroup);
         border : 2px solid green;
         height: var(--height_blockGroup);
+        width: var(--blockGroup_Width);
         
 
         

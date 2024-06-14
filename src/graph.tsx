@@ -18,6 +18,7 @@ const Graph: React.FC<Props> = ({
   title,
   bottomTitle
 }) => {
+  const space: number = 5;
   const partWidth =(300 / data.length);
   const totalWidth = partWidth /2;
   const maxValue = Math.max(...data.map(item => item.current));
@@ -35,10 +36,8 @@ const Graph: React.FC<Props> = ({
   } as React.CSSProperties;
 const blockGroupCss = {
   '--height_blockGroup': `${height}px`,
-  '--marginRight_BlockGroup': '20px',
- '--blockGroup_Width': `${(width / data.length) - parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--marginRight_BlockGroup'))}px`,
- 
-} as React.CSSProperties;
+  '--blockGroup_Width': `calc(${width}px / ${data.length} - ${space}px)`,
+ } as React.CSSProperties;
   const graphColumn_previousStyle = {
     '--backgr-color-column': `${color}`,
     width: totalWidth
