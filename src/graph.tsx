@@ -24,7 +24,7 @@ const Graph: React.FC<Props> = ({
   const topContainer = 30;
   const bottomAreaContainer = 30;
   const contentContainer = height - topContainer - bottomAreaContainer;
-  const { mainContainer, top_Container, content_Container, dataBar, graphColumn, spanValue, graphColumn_previous} = styles
+  const { mainContainer, top_Container, content_Container, dataBar, graphColumn, spanValue, graphColumn_previous, blockGroup} = styles
   const mainContainerStyle = {
     '--main-container-width': `${width}px`,
     '--main-container-height': `${height}px`
@@ -34,7 +34,10 @@ const Graph: React.FC<Props> = ({
     width: totalWidth
   } as React.CSSProperties;
 const blockGroupCss = {
-  '--height_blockGroup': `${height}px`
+  '--height_blockGroup': `${height}px`,
+  '--marginRight_BlockGroup': '20px',
+ '--blockGroup_Width': `${(width / data.length) - parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--marginRight_BlockGroup'))}px`,
+ 
 } as React.CSSProperties;
   const graphColumn_previousStyle = {
     '--backgr-color-column': `${color}`,
@@ -52,7 +55,7 @@ const blockGroupCss = {
       <div className={top_Container} style={{ minHeight: topContainer }}>{title}</div>
       <div className={content_Container} style={{ minHeight: contentContainer, ...minWContContainer }}>
         {data.map(({ current, previous }, index) => (
-          <div key={index} className={styles.blockGroup} style={{ ...blockGroupCss}}>
+          <div key={index} className={blockGroup} style={{ ...blockGroupCss}}>
             <div className={dataBar} key={`current-${index}`}>
               <div className={graphColumn} style={{ height: `${(current / maxValue) * contentContainer}px`, ...graphColumnStyle}} />
               <span className={spanValue} style={spanValueStyle}>{current}</span>

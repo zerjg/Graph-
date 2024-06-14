@@ -1,5 +1,5 @@
 .graphContainer {
-        position: absolute;
+       
         top: 10;
         width: 100%;
        
@@ -9,7 +9,7 @@
         padding: 10px;
         display: flex;
         flex-direction: row;
-        align-items: flex-end;
+        
         justify-content: center;
 }
 
@@ -71,8 +71,9 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-         align-items: flex-end;       
-        width: 50%;
+        align-items: flex-end;       
+        width: var(--blockGroup_Width);
+        margin-right: var(--marginRight_BlockGroup);
         border : 2px solid green;
         height: var(--height_blockGroup);
         
