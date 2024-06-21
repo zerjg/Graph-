@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Graph from './graph';
+import axios from 'axios';
 
 
 
-const DataComponent: React.FC = ()  => {
-  const specificData = [
-    { current: 13, previous: 28 },
-    { current: 80, previous: 54 },
-    { current: 100, previous: 25 },
-    { current: 34, previous: 121 },
+const DataComponent: React.FC = () => {
+
+  const [weatherData, setWeatherData] = useState<{ current: number; previous: number | null }[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<any>(
+          `https://api.openweathermap.org/data/2.5/weather?q=London&appid=503b5760f08bc1afaf91246a950c28f8&units=metric`
+        )
     
-  ]
-  const previousData = specificData.filter(item => item.previous!==null)
+        const currentTemp = response.data.main.temp;
+        const windSpeed = response.data.wind.speed;
+        const newData = { current: currentTemp, previous: windSpeed };
+        setWeatherData([...weatherData, newData])
+
+      } catch (error) {
+        console.error('Ошибка запроса на сервер', error)
+      }
+    }
+    fetchData()
+  }, [])
+  const specificData = weatherData
+  const previousData = specificData.filter(item => item.previous !== null)
   return (
     <div className="data" style={{ display: 'flex', flexDirection: 'row', maxHeight: '1000px' }}>
-        {/* <Graph data={specificData} width={400} height={200} color="blue" title="Текущие данные" bottomTitle="Измерения в Bar" /> */}
+      {/* <Graph data={specificData} width={400} height={200} color="blue" title="Текущие данные" bottomTitle="Измерения в Bar" /> */}
       <Graph data={previousData} width={400} height={200} color="blue" title="Текущий график" bottomTitle="Измерения в Bar" />
     </div>
   );
